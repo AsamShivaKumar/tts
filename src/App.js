@@ -16,9 +16,11 @@ function App() {
     setTranslating(true);
     fetch(`https://tts-backend.onrender.com/translate?text=${text}`)
     .then(res => res.json())
-    .then(data => setTranslatedText(data.output))
-    .catch(err => console.log(err));
-    setTranslating(false);    
+    .then(data => {
+      setTranslatedText(data.output)
+      setTranslating(false);
+    })
+    .catch(err => console.log(err));    
   }
 
   function getSpeech(){
