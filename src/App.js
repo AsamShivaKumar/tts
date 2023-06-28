@@ -9,10 +9,10 @@ function App() {
 
   function translateText() {
     if(text === "") return;
-    fetch(`https://api.mymemory.translated.net/get?q={text}&langpair=en|fr`)
-    .then(res => res.json())
-    .then(data => console.log(data))
-    .catch(err => console.log(err));
+    // fetch(`https://api.mymemory.translated.net/get?q={text}&langpair=en|hi`)
+    // .then(res => res.json())
+    // .then(data => console.log(data))
+    // .catch(err => console.log(err));
     setTranslatedText(text.substring(0, 100));
   }
 
