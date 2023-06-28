@@ -9,11 +9,11 @@ function App() {
 
   function translateText() {
     if(text === "") return;
-    // fetch(`https://api.mymemory.translated.net/get?q={text}&langpair=en|hi`)
-    // .then(res => res.json())
-    // .then(data => console.log(data))
-    // .catch(err => console.log(err));
-    setTranslatedText(text.substring(0, 100));
+    fetch(`https://api.mymemory.translated.net/get?q={text}&langpair=en|hi`)
+    .then(res => res.json())
+    .then(data => setTranslatedText(data.responseData.translatedText))
+    .catch(err => console.log(err));
+    
   }
 
   function getSpeech(){
