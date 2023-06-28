@@ -5,7 +5,7 @@ function App() {
   const apiKey = process.env.REACT_APP_VOICE_KEY;
   const [text, setText] = useState("");
   const [translatedText, setTranslatedText] = useState("");
-  const [url, setUrl] = useState("");
+  const [url, setUrl] = useState(null);
 
   function translateText() {
     if(text === "") return;
@@ -26,8 +26,8 @@ function App() {
       audio.play();
 
       // download the audio
-      const url = window.URL.createObjectURL(new Blob([blob]));
-      setUrl(url);
+      const Url = window.URL.createObjectURL(new Blob([blob]));
+      setUrl(Url);
     })
     .catch(err => console.log(err));
   }
@@ -41,7 +41,7 @@ function App() {
             {translatedText !== "" && <p>Translated text: {translatedText}</p>}
             <div>
               <i className="fi fi-ss-play-circle" onClick={getSpeech}></i>
-              <a download="audio.mp3" href={url}><i className="fi fi-ss-download"></i></a>
+              {url && <a download="audio.mp3" href={url}><i className="fi fi-ss-download"></i></a>}
             </div>
          </div>
     </div>
